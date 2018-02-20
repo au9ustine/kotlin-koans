@@ -10,9 +10,21 @@ fun todoTask1(collection: Collection<Int>): Nothing = TODO(
         paste it into the Kotlin file and let IDE convert it.
         Please use automatic conversion for this task only.
     """,
-    references = { JavaCode1().task1(collection) })
+    references = { JavaCode1().task1(collection) }
+)
 
 
 fun task1(collection: Collection<Int>): String {
-    todoTask1(collection)
+    val sb = StringBuilder()
+    sb.append("{")
+    val iterator = collection.iterator()
+    while (iterator.hasNext()) {
+        val element = iterator.next()
+        sb.append(element)
+        if (iterator.hasNext()) {
+            sb.append(", ")
+        }
+    }
+    sb.append("}")
+    return sb.toString()
 }

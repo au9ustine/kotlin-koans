@@ -1,6 +1,7 @@
 out
-.idea
+.idea/*
 .gradle
 build
 local.properties
 *.iml
+!.idea/codeStyles/
