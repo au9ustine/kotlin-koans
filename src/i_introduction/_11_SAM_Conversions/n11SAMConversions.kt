@@ -15,6 +15,8 @@ fun todoTask11(): Nothing = TODO(
 
 fun task11(): List<Int> {
     val arrayList = arrayListOf(1, 5, 2)
-    Collections.sort(arrayList, { x, y -> todoTask11() })
+    // Here, the lambda implements a Comparator which returns -1/0/1 indicating the order of
+    // sorting
+    Collections.sort(arrayList, { x, y -> y - x })
     return arrayList
 }
