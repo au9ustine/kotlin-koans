@@ -22,7 +22,13 @@ enum class TimeInterval {
     YEAR
 }
 
-class DateRange(override val start: MyDate, override val endInclusive: MyDate): Iterable<MyDate>,
+data class TimeIntervals(val unit: TimeInterval, val amount: Int)
+
+operator fun TimeInterval.times(amount: Int) = TimeIntervals(this, amount)
+operator fun MyDate.plus(delta: TimeInterval) = addTimeIntervals(delta, 1)
+operator fun MyDate.plus(delta: TimeIntervals) = addTimeIntervals(delta.unit, delta.amount)
+
+class DateRange(override val start: MyDate, override val endInclusive: MyDate) : Iterable<MyDate>,
     ClosedRange<MyDate> {
     override fun iterator(): Iterator<MyDate> = object : Iterator<MyDate> {
         var current = start
